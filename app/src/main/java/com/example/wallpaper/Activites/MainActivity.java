@@ -2,7 +2,11 @@ package com.example.wallpaper.Activites;
 
 import android.os.Bundle;
 
+import com.example.wallpaper.Fragments.CollectionsFragment;
+import com.example.wallpaper.Fragments.FavoriteFragment;
+import com.example.wallpaper.Fragments.PhotosFragment;
 import com.example.wallpaper.R;
+import com.example.wallpaper.Utils.Functions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -39,6 +43,9 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        PhotosFragment photosFragment = new PhotosFragment();
+        Functions.changeMainFragment(MainActivity.this,photosFragment);
     }
 
     @Override
@@ -81,10 +88,14 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
+            PhotosFragment photosFragment = new PhotosFragment();
+            Functions.changeMainFragment(MainActivity.this,photosFragment);
         } else if (id == R.id.nav_gallery) {
-
+            CollectionsFragment collectionsFragment = new CollectionsFragment();
+            Functions.changeMainFragment(MainActivity.this,collectionsFragment);
         } else if (id == R.id.nav_slideshow) {
-
+            FavoriteFragment favoriteFragment = new FavoriteFragment();
+            Functions.changeMainFragment(MainActivity.this,favoriteFragment);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
